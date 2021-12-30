@@ -1,0 +1,37 @@
+<div class="mx-auto" style="width: 500px;">
+
+
+    <h1> add employees</h1>
+
+    <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show">
+        <strong>Success!</strong> Data Successfuly saved
+        <button type="button" (click)="closeButton()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <form [formGroup]="addEmployee" (ngSubmit)="onSubmit()">
+        <!-- <div class="form-group">
+        <label for="exampleInputEmail1">ID</label>
+        <input type="number" class="form-control" placeholder="Enter email" formControlName="id">
+
+    </div> -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Fname</label>
+            <input type="text" class="form-control" placeholder="Enter email" formControlName="firstName">
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">LName</label>
+            <input type="text" class="form-control" placeholder="Enter email" formControlName="lastName">
+
+        </div>
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" class="form-control" placeholder="Salary" formControlName="salary">
+        </div>
+
+        <br> <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

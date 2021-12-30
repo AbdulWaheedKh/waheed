@@ -1,0 +1,38 @@
+<p>employee works!</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees ; let i =index">
+                        <!-- <th scope="row">1</th> -->
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.firstName}}</td>
+                        <td>{{employee.lastName}}</td>
+                        <td>{{employee.salary}}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deleteItem(employee.id)">Delete</button>
+                        </td>
+                        <td>
+                            <a routerLink="/Editemployee/{{employee.id}}"><button class="btn btn-success">Update</button></a>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
