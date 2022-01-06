@@ -47,8 +47,8 @@ public class employeeController {
 	public List<Employee> getAllEmp() throws Exception {
 
 		List<Employee> employee = null;
-		employee = managerObj.getAllEmployee();
-	
+		employee = managerObj.getAllEmployee(); 
+	  
 		return employee;
 
 	}
