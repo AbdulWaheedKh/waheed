@@ -1,8 +1,6 @@
 package org.waheed.java.model;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

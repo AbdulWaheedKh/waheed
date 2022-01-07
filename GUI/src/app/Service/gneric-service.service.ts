@@ -4,6 +4,7 @@ import { EmployeesModel } from '../Models/employeeModel';
 // import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { student } from '../Models/student';
 
 
 @Injectable({
@@ -74,6 +75,12 @@ export class GnericServiceService {
         
         );
     });
+  }
+
+//for student withour model 
+
+  getStudents(): Observable<student[]>{
+    return this.http.get<student[]>(this.configUrl+'/getAllStudents')
   }
 
 }
