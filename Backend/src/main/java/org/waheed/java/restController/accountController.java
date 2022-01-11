@@ -31,6 +31,8 @@ public class accountController {
             isBadRequest = true;
         } else {
             try {
+            	acct.setModifiedDate(AppUtility.getCurrentTimeStamp());
+            	acct.setCreatedDate(AppUtility.getCurrentTimeStamp());
                 acct = managerObj.saveSingleAccount(acct);
             } catch (Exception e) {
                 throw new Exception(e.getMessage());
