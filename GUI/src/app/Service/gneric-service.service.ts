@@ -31,7 +31,7 @@ export class GnericServiceService {
 
     })
   };
-  configUrl = 'http://localhost:8080';
+  configUrl = 'http://localhost:8081/waheed';
   configUrl1 = 'http://localhost:8080/DelEmpById';
 
   getEmployees(): Observable<EmployeesModel[]>{
