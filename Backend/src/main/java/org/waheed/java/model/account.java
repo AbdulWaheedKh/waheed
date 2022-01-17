@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.waheed.java.utils.EncryptionUtill;
+
 import lombok.Data;
 
 /**
@@ -44,5 +46,11 @@ public class account {
 	   private Timestamp ModifiedDate;  
 
 	   @Column(name = "Deleted")
-	   private Boolean Deleted;  
+	   private Boolean Deleted; 
+	   
+	   public void setEncryptedPassword(String pwd) {
+		this.setPassword(EncryptionUtill.encryptMD5(pwd));
+	}
+
+
     }

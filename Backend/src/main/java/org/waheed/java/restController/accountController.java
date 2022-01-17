@@ -31,6 +31,8 @@ public class accountController {
             isBadRequest = true;
         } else {
             try {
+                acct.setEncryptedPassword(acct.getPassword());
+                System.out.println( "Encrypted Password >> " +acct.getPassword());
             	acct.setModifiedDate(AppUtility.getCurrentTimeStamp());
             	acct.setCreatedDate(AppUtility.getCurrentTimeStamp());
                 acct = managerObj.saveSingleAccount(acct);
