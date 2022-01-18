@@ -2,6 +2,8 @@ package org.waheed.java.businessLayer;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.waheed.java.model.Employee;
@@ -23,6 +25,7 @@ public class manager {
 
 	@Autowired
 	accountRepository accountRepositoryObj;
+
 
 	/**
 	 * CRUD BUSINESS LOGIC CALLS RESPECTIVELY
@@ -66,7 +69,7 @@ public class manager {
 	 */
 	public Employee getAllEmployee(Long id) {
 
-		return employeeRepositoryObj.getEmpById(id);
+		return employeeRepositoryObj.getById(id);
 	}
 
 	public List<Employee> getAllEmployee() {
@@ -81,17 +84,27 @@ public class manager {
 
 	public List<student> getAllStudents() {
 
-		return studentRepositoryObj.getAllstudents();
+		return studentRepositoryObj.getAllActiveRecords();
 	}
+
+	// public student getStudentById(Long id) {
+
+	// 	return studentRepositoryObj.getStudentById(id);
+	// }
 
 	public student getStudentById(Long id) {
 
-		return studentRepositoryObj.getStudentById(id);
+		return studentRepositoryObj.getById(id);
 	}
 
 	public student saveSingleStudent(student std) {
 
 		return studentRepositoryObj.save(std);
+	}
+
+	@Transactional
+	public int markDeletedById(Long id) {
+		return studentRepositoryObj.markAsDeletedById(id, true);
 	}
 
 	/**

@@ -3,11 +3,7 @@
  */
 package org.waheed.java.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import java.io.Serializable;
 import org.springframework.stereotype.Repository;
 import org.waheed.java.model.student;
 
@@ -16,12 +12,14 @@ import org.waheed.java.model.student;
  *
  */
 @Repository
-public interface studentRepository extends JpaRepository<student, Long> {
+public interface studentRepository extends GenericRepository<student, Serializable> {
 
-	@Query("SELECT s FROM student s")
-	public List<student> getAllstudents();
-	
-	@Query("SELECT s from student s where s.ID = :id")
-	public student getStudentById(@Param("id") Long id);
+//All the methods moved to generic Repository
+
+	// @Query("SELECT s FROM student s")
+	// public List<student> getAllstudents();
+
+	// @Query("SELECT s from student s where s.ID = :id")
+	// public student getStudentById(@Param("id") Long id);
 
 }

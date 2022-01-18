@@ -5,6 +5,7 @@ import { EmployeesModel } from '../Models/employeeModel';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { student } from '../Models/student';
+import { AppConstants } from '../AppConstant';
 
 
 @Injectable({
@@ -31,23 +32,23 @@ export class GnericServiceService {
 
     })
   };
-  configUrl = 'http://localhost:8081/waheed';
+  //configUrl = 'http://localhost:8081/waheed';
   configUrl1 = 'http://localhost:8080/DelEmpById';
 
   getEmployees(): Observable<EmployeesModel[]>{
-    return this.http.get<EmployeesModel[]>(this.configUrl+'/getAll')
+    return this.http.get<EmployeesModel[]>(AppConstants.URL_BASE+'/getAll')
   }
 
   getEmployeeById(  id : Number ): Observable<EmployeesModel>{
-    return this.http.get<EmployeesModel>(this.configUrl+'/'+ id)
+    return this.http.get<EmployeesModel>(AppConstants.URL_BASE+'/'+ id)
   }
 
   delEmployeeById(id:number ): Observable<EmployeesModel>{
-    return this.http.delete<EmployeesModel>(this.configUrl+'/'+ id)
+    return this.http.delete<EmployeesModel>(AppConstants.URL_BASE+'/'+ id)
   }
 
   getCurrentEmployeeById(id:any){
-    return this.http.get(`${this.configUrl+'/getEmpById'}/${id}`)
+    return this.http.get(`${AppConstants.URL_BASE+'/getEmpById'}/${id}`)
   }
 
   // updateCurrentEmployeeById(id:any,data:EmployeesModel){
@@ -60,7 +61,7 @@ export class GnericServiceService {
 
       console.log("sevice called");
       
-      this.http.put(this.configUrl + '/editEmp/'+standardSubject.id, { ...standardSubject })
+      this.http.put(AppConstants.URL_BASE + '/editEmp/'+standardSubject.id, { ...standardSubject })
         .subscribe(response => {
           console.log("after subscribed");
           resolve(response);
@@ -77,10 +78,8 @@ export class GnericServiceService {
     });
   }
 
-//for student withour model 
-
   getStudents(): Observable<student[]>{
-    return this.http.get<student[]>(this.configUrl+'/getAllStudents')
+    return this.http.get<student[]>(AppConstants.STUDENT_RESOURCE+ '/getAllStudents')
   }
 
 }

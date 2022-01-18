@@ -6,11 +6,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.waheed.java.businessLayer.manager;
 import org.waheed.java.exceptions.UserNotFoundException;
@@ -19,6 +21,7 @@ import org.waheed.java.utils.AppUtility;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/student")
 public class studentController {
 
 	@Autowired
@@ -82,7 +85,6 @@ public class studentController {
 
 	@GetMapping("/getStudentById/{id}")
 	public student getstudentById(@PathVariable Long id) throws Exception {
-
 		student std = null;
 		std = managerObj.getStudentById(id);
 		if (std == null)
@@ -92,6 +94,36 @@ public class studentController {
 
 		return std;
 
+	}
+
+	// @GetMapping("/getStudentById/{id}")
+	// public student getstudentById(@PathVariable Long id) throws Exception {
+
+	// 	student std = null;
+	// 	std = managerObj.getStudentById(id);
+	// 	if (std == null)
+	// 		throw new UserNotFoundException("Id > " + id);
+
+	// 	System.out.println("emp ID >> " + std.getID());
+
+	// 	return std;
+
+	// }
+
+	@DeleteMapping("student/{id}")
+	public Integer deleteById(@PathVariable Long id) throws Exception {
+		if (AppUtility.isEmpty(id)) {
+			String message = "Id must not be null!";
+			throw new UserNotFoundException(message);
+		}
+		Integer count = null;
+		try {
+			count = managerObj.markDeletedById(id);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+
+		return count;
 	}
 
 }
