@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.waheed.java.businessLayer.manager;
 import org.waheed.java.model.account;
@@ -13,6 +14,7 @@ import org.waheed.java.utils.AppUtility;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/account")
 public class accountController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

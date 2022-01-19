@@ -22,6 +22,8 @@ public interface GenericRepository<T extends Object , Serializable> extends JpaR
     @Query("select u from #{#entityName} as u  where u.Deleted = 0")
 	public List<T> getAllActiveRecords();
 
+    @Query("select u from #{#entityName} as u")
+	public List<T> getAllActiveRecordsNoDeletedColoum();
 
     
     

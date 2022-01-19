@@ -74,7 +74,7 @@ public class manager {
 
 	public List<Employee> getAllEmployee() {
 
-		return employeeRepositoryObj.getAllEmp();
+		return employeeRepositoryObj.getAllActiveRecords();
 	}
 
 	/**

@@ -1,5 +1,7 @@
 package org.waheed.java.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,5 +34,14 @@ public class Employee {
 
    @Column(name = "salary")
    private int salary;  
+   
+   @Column(name = "CreatedDate")
+   private Timestamp CreatedDate;  
+   
+   @Column(name = "ModifiedDate")
+   private Timestamp ModifiedDate;  
+   
+   @Column(name = "Deleted")
+   private Boolean Deleted;  
    
 }

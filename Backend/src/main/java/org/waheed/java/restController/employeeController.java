@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.waheed.java.businessLayer.manager;
 import org.waheed.java.exceptions.UserNotFoundException;
@@ -26,8 +27,8 @@ import org.waheed.java.repository.employeeRepository;
 import org.waheed.java.utils.AppUtility;
 
 @CrossOrigin(origins = "http://localhost:4200")
-
 @RestController
+@RequestMapping("/employee")
 public class employeeController {
 
 	// DependancyInjection
@@ -74,7 +75,7 @@ public class employeeController {
 //
 //	}
 
-	@GetMapping("/getEmpById/{id}")
+	@GetMapping("/{id}")
 	public Employee getEmpById(@PathVariable Long id) throws Exception {
 	
 		Employee employee = null;
@@ -107,7 +108,7 @@ public class employeeController {
 	
 		Employee employee = null;
 //		try {
-		emprepo.deleteById(id);
+		managerObj.markDeletedById(id);
 
 	}
 	
