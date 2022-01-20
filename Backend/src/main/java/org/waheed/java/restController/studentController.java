@@ -46,7 +46,7 @@ public class studentController {
 	 * @return
 	 * @throws Exception
 	 */
-	@PostMapping("/createStudent")
+	@PostMapping("/")
 	public student createStudent(@Valid @RequestBody student student) throws Exception {
 		Boolean isBadRequest = false;
 		String message = "";
@@ -67,7 +67,7 @@ public class studentController {
 
 	}
 
-	@PutMapping("/editStudent/{id}")
+	@PutMapping("/{id}")
 	public student editEmpById(@PathVariable Long id, @RequestBody student std) throws Exception {
 
 		Boolean isBadRequest = false;
@@ -83,7 +83,7 @@ public class studentController {
 
 	}
 
-	@GetMapping("/getStudentById/{id}")
+	@GetMapping("/{id}")
 	public student getstudentById(@PathVariable Long id) throws Exception {
 		student std = null;
 		std = managerObj.getStudentById(id);
@@ -110,7 +110,7 @@ public class studentController {
 
 	// }
 
-	@DeleteMapping("student/{id}")
+	@DeleteMapping("/{id}")
 	public Integer deleteById(@PathVariable Long id) throws Exception {
 		if (AppUtility.isEmpty(id)) {
 			String message = "Id must not be null!";

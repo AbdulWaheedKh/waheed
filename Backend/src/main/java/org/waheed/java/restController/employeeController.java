@@ -113,7 +113,7 @@ public class employeeController {
 	}
 	
 	
-	@PostMapping("/newEmp")
+	@PostMapping("/")
 	public Employee createEmpById(@Valid @RequestBody Employee emp) throws Exception {
 		Boolean isBadRequest = false;
 		String message = "";
@@ -139,7 +139,7 @@ public class employeeController {
 	}
 	
 	
-	@PutMapping("/editEmp/{id}")
+	@PutMapping("/{id}")
 	public Employee editEmpById(@PathVariable Long id ,@RequestBody Employee emp ) throws Exception {
 
 		Boolean isBadRequest = false;

@@ -11,3 +11,14 @@ CREATE TABLE `employe` (
 COLLATE='latin1_swedish_ci'
 ENGINE=MyISAM
 ;
+
+
+
+-- add delete column institute`--
+ALTER TABLE `institute`
+	ADD COLUMN `Deleted` BIT(1) NOT NULL DEFAULT b'0' AFTER `ModifiedDate`;
+	
+-- add delete column profile`--	
+ALTER TABLE `profile`
+	ADD COLUMN `Deleted` INT(1) NOT NULL DEFAULT '0' AFTER `ModifiedDate`;
+
