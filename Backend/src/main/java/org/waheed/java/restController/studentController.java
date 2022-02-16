@@ -1,10 +1,12 @@
 package org.waheed.java.restController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,29 @@ public class studentController {
 
 		List<student> students = null;
 		students = managerObj.getAllStudents();
+
+		return students;
+
+	}
+
+	@GetMapping("/getAllStudentsByDate")
+	public List<student> getAllStudentsByDate(@Param("NewDate") String NewDate ) throws Exception {
+
+		// SELECT id
+		// FROM student s
+		// WHERE s.DateNew BETWEEN '2012-01-27' AND '2012-01-27'
+
+		
+
+		System.out.println("NewDate >>>>>"+NewDate);
+		LocalDate date = LocalDate.parse(NewDate);
+		System.out.println("date >>>>>"+date);
+		List<student> students = null;
+
+		LocalDate dateParsing = LocalDate.parse("2021-09-07"); 
+        System.out.println(dateParsing); // prints 2021-09-07
+		
+		students = managerObj.getAllStudentsByDate(date);
 
 		return students;
 

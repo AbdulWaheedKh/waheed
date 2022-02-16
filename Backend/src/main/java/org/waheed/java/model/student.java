@@ -4,6 +4,7 @@
 package org.waheed.java.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,6 +45,9 @@ public class student {
 	   
 	   @Column(name = "CreatedDate")
 	   private Timestamp CreatedDate;  
+
+	   @Column(name = "DateNew")
+	   private LocalDate DateNew; 
 	   
 	   @Column(name = "ModifiedDate")
 	   private Timestamp ModifiedDate;  

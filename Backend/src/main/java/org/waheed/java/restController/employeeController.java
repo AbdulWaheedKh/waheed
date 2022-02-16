@@ -24,6 +24,7 @@ import org.waheed.java.businessLayer.manager;
 import org.waheed.java.exceptions.UserNotFoundException;
 import org.waheed.java.model.Employee;
 import org.waheed.java.repository.employeeRepository;
+import org.waheed.java.utils.AppConstants;
 import org.waheed.java.utils.AppUtility;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -74,32 +75,48 @@ public class employeeController {
 //		return employee;
 //
 //	}
-
+	
+	
+	
 	@GetMapping("/{id}")
 	public Employee getEmpById(@PathVariable Long id) throws Exception {
 	
 		Employee employee = null;
-//		try {
+		try {
 			employee = managerObj.getAllEmployee(id);
-//		} catch (Exception e) {
-//			throw new Exception(e+"No Record Found for this Id "+id);
-//		}
-
-			if(employee == null ) 
-				throw new UserNotFoundException("Id > "+ id);
-			
-			EntityModel<Employee> model = EntityModel.of(employee);
-			WebMvcLinkBuilder linkBuilder = linkTo(methodOn(this.getClass()).getAllEmp());
-			
-			model.add(linkBuilder.withRel("All-Employees"));
-			
-			
-			System.out.println("emp ID >> "+ employee.getId());
-			
+			System.out.println(employee.toString());
+		} catch (Exception e) {
+			throw new UserNotFoundException(AppConstants.USER_NOT_FOUND);
+		}			
 		return employee;
 
 	}
-	
+
+//	@GetMapping("/{id}")
+//	public Employee getEmpById(@PathVariable Long id) throws Exception {
+//	
+//		Employee employee = null;
+////		try {
+//			employee = managerObj.getAllEmployee(id);
+////		} catch (Exception e) {
+////			throw new Exception(e+"No Record Found for this Id "+id);
+////		}
+//
+//			if(employee == null ) 
+//				throw new UserNotFoundException("Id > "+ id);
+//			
+//			EntityModel<Employee> model = EntityModel.of(employee);
+//			WebMvcLinkBuilder linkBuilder = linkTo(methodOn(this.getClass()).getAllEmp());
+//			
+//			model.add(linkBuilder.withRel("All-Employees"));
+//			
+//			
+//			System.out.println("emp ID >> "+ employee.getId());
+//			
+//		return employee;
+//
+//	}
+//	
 	@Autowired 
 	employeeRepository emprepo;
 	

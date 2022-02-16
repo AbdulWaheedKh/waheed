@@ -1,5 +1,6 @@
 package org.waheed.java.businessLayer;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -85,6 +86,11 @@ public class manager {
 	public List<student> getAllStudents() {
 
 		return studentRepositoryObj.getAllActiveRecords();
+	}
+
+	public List<student> getAllStudentsByDate(LocalDate date) {
+
+		return studentRepositoryObj.getAllstudentsByDate(date);
 	}
 
 	// public student getStudentById(Long id) {
