@@ -1,16 +1,20 @@
 package org.waheed.java;
 
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
+import org.waheed.java.model.DaysOfTheWeek;
 
 
 @SpringBootApplication
 public class WaheedApplication {
 
+	private static final Object va = null;
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());	
 	
 	@Bean
@@ -27,8 +31,18 @@ public class WaheedApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WaheedApplication.class, args);
-		System.out.println("pakistan");
-		System.out.println("pakistan");
+		System.out.println("APP STARTED");
+
+		DaysOfTheWeek day = DaysOfTheWeek.FRIDAY;
+
+		for (DaysOfTheWeek va : DaysOfTheWeek.values()) {
+			System.out.println(va);
+			System.out.println(Stream.of(va).distinct());
+			
+		}
+		System.out.println(Stream.of(va).count());
+
+		System.out.println("ENUM specific >> " + day);
 	}
 
 }
