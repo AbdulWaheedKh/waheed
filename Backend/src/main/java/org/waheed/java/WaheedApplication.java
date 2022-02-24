@@ -1,7 +1,9 @@
 package org.waheed.java;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -50,7 +52,9 @@ public class WaheedApplication {
 		LocalDate date = LocalDate.now();
 		ZoneId zoneId = ZoneId.systemDefault(); // or: ZoneId.of("Europe/Oslo");
 		long epoch = date.atStartOfDay(zoneId).toEpochSecond();
+	//	long epocha = date.toEpochSecond(LocalTime.now(), ZoneOffset);
 		 System.out.println("epoch ! "+epoch);
+	//	 System.out.println("epocha ! "+epocha);
 		 System.out.println("zoneId ! "+zoneId);
 		  System.out.println("date ! "+date);
 	}
