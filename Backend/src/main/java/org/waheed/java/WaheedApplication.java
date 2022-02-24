@@ -1,5 +1,7 @@
 package org.waheed.java;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -37,12 +39,20 @@ public class WaheedApplication {
 
 		for (DaysOfTheWeek va : DaysOfTheWeek.values()) {
 			System.out.println(va);
-			System.out.println(Stream.of(va).distinct());
+		//	System.out.println(Stream.of(va).distinct());
 			
 		}
-		System.out.println(Stream.of(va).count());
+	//	System.out.println(Stream.of(va).count());
 
 		System.out.println("ENUM specific >> " + day);
+
+		System.out.println("Hello World!");
+		LocalDate date = LocalDate.now();
+		ZoneId zoneId = ZoneId.systemDefault(); // or: ZoneId.of("Europe/Oslo");
+		long epoch = date.atStartOfDay(zoneId).toEpochSecond();
+		 System.out.println("epoch ! "+epoch);
+		 System.out.println("zoneId ! "+zoneId);
+		  System.out.println("date ! "+date);
 	}
 
 }
