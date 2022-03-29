@@ -43,7 +43,7 @@ export class EditEmployeeComponent implements OnInit {
     console.log("data valyes updatdd");
     console.log(this.editEmployee.value);
     this.alert = true;
-    
+    this.router.navigateByUrl("/employee");
   }
   closeButton(){
     this.alert = false;

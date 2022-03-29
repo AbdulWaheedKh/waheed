@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { EmployeesModel } from './Models/employeeModel';
+import { AppConstants } from './AppConstant';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,11 @@ export class DataService {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     })
   };
-  add(data:EmployeesModel){
-return this.https.post(this.configUrl+'/newEmp' ,data)
+  addEmployee(data:EmployeesModel){
+return this.https.post(AppConstants.URL_BASE+'/newEmp' ,data)
   }
+
+  // add(data:EmployeesModel){
+  //   return this.https.post(this.configUrl+'/newEmp' ,data)
+  //     }
 }

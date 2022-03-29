@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -16,21 +17,19 @@ alert : boolean = false;
     id : new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-  salary: new FormControl('')
+    salary: new FormControl('')
   })
 
-  constructor(private data:DataService) { }
+  constructor(private data:DataService, private router:Router) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
     console.log(this.addEmployee.value);
-    this.data.add(this.addEmployee.value).subscribe((res)=>{
-      console.log('result' , res);
-      
+    this.data.addEmployee(this.addEmployee.value).subscribe((res)=>{
+      this.alert = true;
     })
-    this.alert = true;
-    this.addEmployee.reset();
+    this.router.navigateByUrl("/employee");
     };
 
     closeButton(){

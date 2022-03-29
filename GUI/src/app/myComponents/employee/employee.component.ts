@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesModel } from 'src/app/Models/employeeModel';
 import { GnericServiceService } from 'src/app/Service/gneric-service.service';
-
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -9,6 +8,7 @@ import { GnericServiceService } from 'src/app/Service/gneric-service.service';
 })
 export class EmployeeComponent implements OnInit {
 employees:EmployeesModel[]=[];
+searchText:any;
   constructor(private gnerService:GnericServiceService) { }
 
   ngOnInit(): void {
@@ -36,5 +36,17 @@ this.getEmployees()
       
     
   }
+
+  // key : string = 'id';
+  // reverse : boolean =false;
+  // sort(key){
+
+  //   this.key = key;
+  //   this.reverse = !
+
+  // }
+
+
+  
 
 }

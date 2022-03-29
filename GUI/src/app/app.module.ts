@@ -9,8 +9,10 @@ import { GnericServiceService } from './Service/gneric-service.service';
 
 import { EditEmployeeComponent } from './myComponents/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './myComponents/add-employee/add-employee.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentComponent } from './myComponents/student/student/student.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,11 @@ import { StudentComponent } from './myComponents/student/student/student.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    Ng2SearchPipeModule,
+    Ng2OrderModule
   ],
   providers: [GnericServiceService],
   bootstrap: [AppComponent]
