@@ -1,5 +1,9 @@
 package org.waheed.java;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -52,7 +57,7 @@ public class WaheedApplication extends SpringBootServletInitializer {
     }
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		SpringApplication.run(WaheedApplication.class, args);
 		LoggerFactory.getLogger("------------- APP STARTED ----------------");
 	//	final Logger logger = LoggerFactory.class.
@@ -173,6 +178,21 @@ public class WaheedApplication extends SpringBootServletInitializer {
 		  ZoneId z = ZoneId.systemDefault();
 LocalDate today = LocalDate.now( z ) ;
 System.out.println(today);
+
+
+//Java Program to demonstrate how to read File in Java 8 using Stream.
+Files.lines(Paths.get("E:/file.txt"), StandardCharsets.UTF_8)
+.forEach(System.out::println);
+
+String content = "Hello World !! new world";
+Files.write(Paths.get("E:/fileWrite.txt"), content.getBytes());
+ 
+List<Integer> listInt = new ArrayList<>();
+listInt.add(45); listInt.add(42); listInt.add(41); listInt.add(4); listInt.add(5);listInt.add(4522);
+System.out.print("List >> "+ listInt);
+
+ List<Integer> newlist = listInt.stream().sorted().collect(Collectors.toList());
+ newlist.forEach(System.out::println);
 
 
 

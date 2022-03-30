@@ -26,7 +26,8 @@ import org.waheed.java.model.Employee;
 import org.waheed.java.repository.employeeRepository;
 import org.waheed.java.utils.AppConstants;
 import org.waheed.java.utils.AppUtility;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/employee")
@@ -39,7 +40,7 @@ public class employeeController {
 	
 	@Autowired
 	private MessageSource messagesource;
-
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * @return
 	 * @throws Exception
@@ -86,6 +87,7 @@ public class employeeController {
 			employee = managerObj.getAllEmployee(id);
 			System.out.println(employee.toString());
 		} catch (Exception e) {
+			logger.info("emp  ::does not exist");
 			throw new UserNotFoundException(AppConstants.USER_NOT_FOUND);
 		}			
 		return employee;
